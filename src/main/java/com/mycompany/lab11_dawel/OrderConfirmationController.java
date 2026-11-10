@@ -51,9 +51,9 @@ public class OrderConfirmationController implements Initializable {
         drinkLabel.setText(strings[1]);
         waterLabel.setText(strings[2]);
         specialOrder.setText(strings[3]);
-        foodCost.setText("$" + String.valueOf(calcPrice(foodLabel.getText())));
-        drinkCost.setText("$" + String.valueOf(calcPrice(drinkLabel.getText())));
-        totalCash.setText("$" + String.valueOf(calcPrice(foodLabel.getText()) + calcPrice(drinkLabel.getText())));
+        foodCost.setText("$" + String.format("%.2f",calcPrice(foodLabel.getText())));
+        drinkCost.setText("$" + String.format("%.2f",calcPrice(drinkLabel.getText())));
+        totalCash.setText("$" + String.format("%.2f",calcPrice(foodLabel.getText()) + calcPrice(drinkLabel.getText())));
     }
     
 }

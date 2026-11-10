@@ -7,6 +7,7 @@ package com.mycompany.lab11_dawel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +24,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 import javafx.stage.Modality;
@@ -44,20 +46,10 @@ public class OrderController implements Initializable {
     private ToggleGroup DrinkGroup;
 
     @FXML
-    private Button OrderButton;
-
-    @FXML
-    private MenuItem clearOrderMenu;
-
-    @FXML
-    private RadioButton coffeeBtn;
-
-    @FXML
     private MenuItem exitMenu;
 
     @FXML
     private ListView<String> foodSelection;
-
 
     @FXML
     private Label orderLabel;
@@ -111,8 +103,8 @@ public class OrderController implements Initializable {
         popUpStage.setTitle("Order Confirmation");
         
         String waterString = "";
-        RadioButton selectedRadioButton = (RadioButton) DrinkGroup.getSelectedToggle();
         
+        RadioButton selectedRadioButton = (RadioButton) DrinkGroup.getSelectedToggle();
         String buttonText = selectedRadioButton.getText();
         
         if (waterRequestButton.isSelected()) {
@@ -132,8 +124,6 @@ public class OrderController implements Initializable {
         popUpStage.setScene(new Scene(root));
         popUpStage.initModality(Modality.APPLICATION_MODAL);
         popUpStage.show();
-        
-        
 
     }
     
@@ -145,6 +135,31 @@ public class OrderController implements Initializable {
         String[] foodArray = {"Chicken Salad", "Turkey Sandwich", "Vegetable Wrap", "Grilled Cheese"};
         ObservableList<String> foods = FXCollections.observableArrayList(foodArray);
         foodSelection.setItems(foods);
-    }    
+        
+        orderLabel.textProperty().bind(Bindings.createStringBinding(() -> {
 
-}
+                String selectedItem = foodSelection.getSelectionModel().getSelectedItem();
+                double listPrice = 0.0;
+                if (selectedItem != null) {
+                    listPrice = Order.calcPrice(selectedItem);
+                }
+
+                Toggle selectedToggle = DrinkGroup.getSelectedToggle();
+                double togglePrice = 0.0;
+                if (selectedToggle != null) {
+                    String toggleText = ((RadioButton) selectedToggle).getText();
+                    togglePrice = Order.calcPrice(toggleText);
+                }
+
+                double total = listPrice + togglePrice;
+
+                return String.format("$%.2f", total);
+
+            }, 
+            foodSelection.getSelectionModel().selectedItemProperty(),
+            DrinkGroup.selectedToggleProperty()
+            ));
+            
+        }
+        
+    }    

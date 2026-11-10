@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="305.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lab11_dawel.OrderConfirmationController">
+   <children>
+      <HBox layoutX="3.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="298.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="TOP_LEFT" nodeOrientation="RIGHT_TO_LEFT" text="Food">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" nodeOrientation="RIGHT_TO_LEFT" text="Drink">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" nodeOrientation="RIGHT_TO_LEFT" text="Water">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" nodeOrientation="RIGHT_TO_LEFT" text="Special">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" nodeOrientation="RIGHT_TO_LEFT" text="Total">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="67.0" spacing="9.0">
+               <children>
+                  <Label fx:id="foodLabel" text="Label" />
+                  <Label fx:id="drinkLabel" text="Label" />
+                  <Label fx:id="waterLabel" text="Label" />
+                  <Label fx:id="specialOrder" text="Label" />
+                  <Label fx:id="totalCash" text="Label" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="9.0">
+               <children>
+                  <Label fx:id="foodCost" text="Label" />
+                  <Label fx:id="drinkCost" text="Label" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label alignment="TOP_RIGHT" layoutX="53.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Your Order Confirmation">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

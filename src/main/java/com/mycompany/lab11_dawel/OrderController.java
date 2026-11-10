@@ -23,7 +23,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 import javafx.stage.Modality;
@@ -35,6 +34,9 @@ import javafx.stage.Stage;
  */
 public class OrderController implements Initializable {
 
+    @FXML
+    private Parent rootPane;
+    
     @FXML
     private Button ClearButton;
 
@@ -56,37 +58,31 @@ public class OrderController implements Initializable {
     @FXML
     private ListView<String> foodSelection;
 
-    @FXML
-    private RadioButton juiceBtn;
-
-    @FXML
-    private MenuItem newOrderMenu;
 
     @FXML
     private Label orderLabel;
 
-    @FXML
-    private RadioButton sodaBtn;
 
     @FXML
     public TextField specialRequestField;
 
-    @FXML
-    private RadioButton teaBtn;
 
     @FXML
     private CheckBox waterRequestButton;
 
-    
-
     @FXML
     void clearOrder(ActionEvent event) {
-        
+        foodSelection.getSelectionModel().clearSelection();
+        DrinkGroup.selectToggle(null);
+        waterRequestButton.setSelected(false);
+        specialRequestField.clear();
 
     }
 
     @FXML
     void exitInstance(ActionEvent event) {
+         Stage stage = (Stage) rootPane.getScene().getWindow();
+         stage.close();
 
     }
 
@@ -138,11 +134,6 @@ public class OrderController implements Initializable {
         popUpStage.show();
         
         
-
-    }
-
-    @FXML
-    void resetOrder(ActionEvent event) {
 
     }
     

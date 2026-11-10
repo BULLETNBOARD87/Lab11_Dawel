@@ -4,6 +4,7 @@
  */
 package com.mycompany.lab11_dawel;
 
+import static com.mycompany.lab11_dawel.Order.calcPrice;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -50,50 +51,9 @@ public class OrderConfirmationController implements Initializable {
         drinkLabel.setText(strings[1]);
         waterLabel.setText(strings[2]);
         specialOrder.setText(strings[3]);
-        foodCost.setText(String.valueOf(calcPrice(foodLabel.getText())));
-        drinkCost.setText(String.valueOf(calcPrice(drinkLabel.getText())));
-        totalCash.setText(String.valueOf(calcPrice(foodLabel.getText()) + calcPrice(drinkLabel.getText())));
-    }
-    
-    /**
-     * Calculates a price based on listed item.
-     * Only works for the following strings:
-     * Chicken Salad, Turkey Sandwich, Vegetable Wrap, Grilled Cheese.
-     * Coffee, Tea, Soda, Juice.
-     * Any other string returns a price of $0.0.
-     * @param string The string to calculate the price for.
-     * @return The price.
-     */
-    public double calcPrice(String string) {
-        
-        double price1 = 0.0;
-        double price2 = 0.0;
-        
-        if (string.equals("Chicken Salad")) {
-            price1 = 6.5;
-        } else if (string.equals("Turkey Sandwich")) {
-            price1 = 6.5;
-        } else if (string.equals("Vegetable Wrap")) {
-            price1 = 6.0;
-        } else if (string.equals("Grilled Cheese")) {
-            price1 = 5;
-        } else {
-            price1 = 0.0;
-        }
-        
-        if (string.equals("Coffee")) {
-            price2 = 1.5;
-        } else if (string.equals("Tea")) {
-            price2 = 1.5;
-        } else if (string.equals("Soda")) {
-            price2 = 2.0;
-        } else if (string.equals("Juice")) {
-            price2 = 1.75;
-        } else {
-            price2 = 0.0;
-        }
-        
-        return price1 + price2;
+        foodCost.setText("$" + String.valueOf(calcPrice(foodLabel.getText())));
+        drinkCost.setText("$" + String.valueOf(calcPrice(drinkLabel.getText())));
+        totalCash.setText("$" + String.valueOf(calcPrice(foodLabel.getText()) + calcPrice(drinkLabel.getText())));
     }
     
 }

@@ -15,14 +15,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lab11_dawel.OrderController">
+<Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lab11_dawel.OrderController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="306.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Options">
+          <Menu mnemonicParsing="false" text="_Options">
             <items>
                   <MenuItem fx:id="newOrderMenu" mnemonicParsing="false" onAction="#newOrders" text="New Order" />
-                  <MenuItem fx:id="clearOrderMenu" mnemonicParsing="false" onAction="#resetOrder" text="Clear Order" />
+                  <MenuItem fx:id="clearOrderMenu" mnemonicParsing="false" onAction="#clearOrder" text="Clear Order" />
               <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#exitInstance" text="Exit" />
                   <MenuItem mnemonicParsing="false" text="Close" />
             </items>
